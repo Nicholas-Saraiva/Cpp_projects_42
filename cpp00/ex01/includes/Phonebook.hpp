@@ -1,17 +1,19 @@
 #pragma once
+#include <iomanip>
 #include "Contact.hpp"
 
 #define	MAX_CONTACT 8
+#define CLEAR "\033[2J\033[H"
 
 class Phonebook
 {
 	private:
 		Contact	contacts[8];
-		size_t	iterator;
+		int		iterator;
 	public:
 		Phonebook();
 
-		void	add();
-		void	search();
+		int		add();
+		int		search();
 		~Phonebook();
 };
