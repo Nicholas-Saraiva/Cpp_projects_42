@@ -14,6 +14,8 @@ class Phonebook
 		Phonebook();
 
 		int		add();
-		int		search();
+		void	search();
+		void	printTable();
+		void	printContact();
 		~Phonebook();
 };

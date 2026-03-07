@@ -31,8 +31,8 @@ int	main()
 		}
 		else if (line == ("SEARCH"))
 		{
-			if (!pb.search())
-				clear();
+			clear();
+			pb.search();
 		}
 		else if (line == ("EXIT"))
 			return (0);

@@ -34,7 +34,36 @@ int	Phonebook::add()
 	return (0);
 }
 
-int	Phonebook::search()
+void	Phonebook::printContact()
+{
+	std::string	line;
+	int			id;
+
+	while (true) 
+	{
+		std::cout << "Select a id (0 - 8): ";
+		if (!std::getline(std::cin, line))
+			return;
+		if (line.length() == 1 && std::isdigit(line[0]))
+		{
+			id = line[0] - '0';
+			if (id >= 0 && id < this->iterator)
+				break;
+		}
+		if (this->iterator == 0)
+			return;
+		std::cout << CLEAR;
+		this->printTable();
+		std::cout << "Invalid ID.";
+	}
+	std::cout << "Name: " << this->contacts[id].getName() << std::endl;
+	std::cout << "Last Name: " << this->contacts[id].getLastName() << std::endl;
+	std::cout << "Nickname: "<< this->contacts[id].getNickname() << std::endl;
+	std::cout << "Phone Number: " << this->contacts[id].getPhoneNumber() << std::endl;
+	std::cout << "Darkest Secret: " << this->contacts[id].getDarkestSecret() << std::endl;
+}
+
+void	Phonebook::printTable()
 {
 	std::string	msg[] = {
 		"index|",
@@ -70,7 +99,12 @@ int	Phonebook::search()
 				<< std::setw(10) << this->contacts[i].getNickname() << "|";
 		std::cout << std::endl;
 	}
-	return (0);
+}
+
+void	Phonebook::search()
+{
+	Phonebook::printTable();
+	Phonebook::printContact();
 }
 
 Phonebook::~Phonebook(){}
