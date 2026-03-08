@@ -78,7 +78,7 @@ void	Phonebook::printTable()
 	if (this->iterator == 0)
 		std::cout << std::right << std::setfill(' ')
 				<< std::setw(37) << "😭 ¿No Contacts? 😭" << std::endl;
-	for (int i = 0; i < this->iterator; i++)
+	for (int i = 0; i < MAX_CONTACT; i++)
 	{
 		std::cout << std::right << std::setfill(' ')
 			<< std::setw(10) << i << "|";
