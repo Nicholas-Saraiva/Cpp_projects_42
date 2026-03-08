@@ -35,7 +35,7 @@ $(BUILD_PATH):
 -include $(DEPS)
 
 clean:
-	rm -rf $(OBJ_DIR)
+	rm -rf $(BUILD_PATH)
 	@echo "Cleaned object files."
 fclean: clean
 	rm -rf $(NAME)
