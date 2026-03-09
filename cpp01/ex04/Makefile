@@ -1,5 +1,5 @@
 #//---Files--//#
-NAME = replace
+NAME = zombie
 SRC_DIR = .
 BUILD_PATH  = .build/
 INC_DIR = .
