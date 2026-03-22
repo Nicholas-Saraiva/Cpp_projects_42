@@ -1,19 +1,19 @@
 #include "HumanB.hpp"
 #include <iostream>
 
-HumanB::HumanB(std::string name) : _name(name), _weapon(NULL){}
+HumanB::HumanB(std::string name) : name(name), weapon(NULL){}
 
 void HumanB::attack()
 {
-	if (this->_weapon != NULL)
-		std::cout << this->_name << " attacks with their " << this->_weapon->getType() << std::endl;
+	if (this->weapon != NULL)
+		std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
 	else
-		std::cout << this->_name << " attacks with their bare hands" << std::endl;
+		std::cout << this->name << " doesn't have Weapons, only his bare hands" << std::endl;
 }
 
 void HumanB::setWeapon(Weapon &weapon)
 {
-	this->_weapon = &weapon;
+	this->weapon = &weapon;
 }
 
 HumanB::~HumanB()

@@ -1,6 +1,15 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <sys/stat.h>
+
+bool	isDirectory(const char* path)
+{
+	struct stat s;
+	if (stat(path, &s) == 0)
+		return (s.st_mode & S_IFDIR);
+	return false;
+}
 
 int	main(int argc, char *argv[])
 {
@@ -16,20 +25,24 @@ int	main(int argc, char *argv[])
 	}
 	if (*argv[2] == '\0')
 	{
-		std::cerr << "Error: Empty string is not allowed in the second argument." << std::endl;
+		std::cerr << "Error: Search string (s1) cannot be empty." << std::endl;
 		return (1);	
 	}
-	replaceName = std::string(argv[1]).append(".replace");
+	if (isDirectory(argv[1]))
+	{
+		std::cerr << "Error: " << argv[1] << " is a directory.!" << std::endl;
+		return (1);
+	}
+	replaceName = std::string(argv[1]) + ".replace";
 	readFile.open(argv[1]);
 	if (!readFile.is_open())
 	{
-		std::cerr << "Error: " << argv[1] << " Cannot be open!" << std::endl;
+		std::cerr << "Error: " << argv[1] << " Could not open!" << std::endl;
 		return (1);
 	}
 	replaceFile.open(replaceName.c_str());
 	if (!replaceFile.is_open())
 	{
-		readFile.close();
 		std::cerr << "Error: " << replaceName << " Cannot be open!" << std::endl;
 		return (1);
 	}
@@ -51,6 +64,5 @@ int	main(int argc, char *argv[])
 		}
 		replaceFile << std::endl;
 	}
-	readFile.close();
-	replaceFile.close();
+	return (0);
 }

@@ -1,5 +1,5 @@
 #//---Files--//#
-NAME = zombie
+NAME = fight
 SRC_DIR = .
 BUILD_PATH  = .build/
 INC_DIR = .
