@@ -54,6 +54,103 @@ int	Fixed::toInt(void) const
 	return (static_cast<int>(getRawBits() >> _bits));
 };
 
+bool Fixed::operator<(const Fixed &other) const
+{
+	return this->toFloat() < other.toFloat();
+}
+
+bool Fixed::operator<=(const Fixed &other) const
+{
+	return this->toFloat() <= other.toFloat();
+}
+
+bool Fixed::operator>(const Fixed &other) const
+{
+	return this->toFloat() > other.toFloat();
+}
+
+bool Fixed::operator>=(const Fixed &other) const
+{
+	return this->toFloat() >= other.toFloat();
+}
+
+bool Fixed::operator==(const Fixed &other) const
+{
+	return this->toFloat() == other.toFloat();
+}
+
+bool Fixed::operator!=(const Fixed &other) const
+{
+	return this->toFloat() != other.toFloat();
+}
+
+Fixed	Fixed::operator+(const Fixed& other) const
+{
+	return Fixed(this->getRawBits() + other.getRawBits());
+}
+
+Fixed	Fixed::operator-(const Fixed& other) const
+{
+	return Fixed(this->getRawBits() - other.getRawBits());
+}
+
+Fixed	Fixed::operator*(const Fixed& other) const
+{
+	return Fixed(this->getRawBits() * other.getRawBits());
+}
+
+Fixed	Fixed::operator/(const Fixed& other) const
+{
+	return Fixed(this->getRawBits() / other.getRawBits());
+}
+
+Fixed&	Fixed::operator++()
+{
+	this->setRawBits(this->getRawBits() + 1);
+	return *this;
+}
+
+Fixed	Fixed::operator++(int)
+{
+	Fixed	temp = *this;
+
+	this->setRawBits(this->getRawBits() + 1);
+	return temp;
+}
+
+Fixed&	Fixed::operator--()
+{
+	this->setRawBits(this->getRawBits() - 1);
+	return *this;
+}
+
+Fixed	Fixed::operator--(int)
+{
+	Fixed	temp = *this;
+
+	this->setRawBits(this->getRawBits() - 1);
+	return temp;
+}
+
+Fixed&	Fixed::min(Fixed& num1, Fixed& num2)
+{
+	return ((num1 < num2) ? num1 : num2);
+}
+
+const Fixed&	Fixed::min(const Fixed& num1, const Fixed& num2)
+{
+	return ((num1 < num2) ? num1 : num2);
+}
+
+Fixed&	Fixed::max(Fixed& num1, Fixed& num2)
+{
+	return ((num1 > num2) ? num1 : num2);
+}
+
+const Fixed&	Fixed::max(const Fixed& num1, const Fixed& num2)
+{
+	return ((num1 > num2) ? num1 : num2);
+}
 
 std::ostream &operator<<(std::ostream &stream, Fixed const &other)
 {
@@ -65,5 +162,4 @@ std::ostream &operator<<(std::ostream &stream, Fixed const &other)
 Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;
-
 }
