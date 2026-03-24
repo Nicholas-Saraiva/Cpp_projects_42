@@ -56,32 +56,32 @@ int	Fixed::toInt(void) const
 
 bool Fixed::operator<(const Fixed &other) const
 {
-	return this->toFloat() < other.toFloat();
+	return this->getRawBits() < other.getRawBits();
 }
 
 bool Fixed::operator<=(const Fixed &other) const
 {
-	return this->toFloat() <= other.toFloat();
+	return this->getRawBits() <= other.getRawBits();
 }
 
 bool Fixed::operator>(const Fixed &other) const
 {
-	return this->toFloat() > other.toFloat();
+	return this->getRawBits() > other.getRawBits();
 }
 
 bool Fixed::operator>=(const Fixed &other) const
 {
-	return this->toFloat() >= other.toFloat();
+	return this->getRawBits() >= other.getRawBits();
 }
 
 bool Fixed::operator==(const Fixed &other) const
 {
-	return this->toFloat() == other.toFloat();
+	return this->getRawBits() == other.getRawBits();
 }
 
 bool Fixed::operator!=(const Fixed &other) const
 {
-	return this->toFloat() != other.toFloat();
+	return !(*this == other);
 }
 
 Fixed	Fixed::operator+(const Fixed& other) const
@@ -96,12 +96,23 @@ Fixed	Fixed::operator-(const Fixed& other) const
 
 Fixed	Fixed::operator*(const Fixed& other) const
 {
-	return Fixed(this->getRawBits() * other.getRawBits());
+	Fixed result;
+	long long	tmp = (static_cast<long long>(this->getRawBits()) * \
+		static_cast<long long>(other.getRawBits())) >> _bits;
+
+	result.setRawBits(tmp);
+	return (result);
 }
 
 Fixed	Fixed::operator/(const Fixed& other) const
 {
-	return Fixed(this->getRawBits() / other.getRawBits());
+	Fixed result;
+	long long	n = static_cast<long long>(this->getRawBits()) << _bits;
+
+	if (other.getRawBits() == 0)
+		return (Fixed(0));
+	result.setRawBits(static_cast<int>(n / other.getRawBits()));
+	return result;
 }
 
 Fixed&	Fixed::operator++()
