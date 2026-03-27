@@ -4,31 +4,26 @@
 
 Fixed::Fixed() : _fixedPoint(0)
 {
-	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &other)
 {
 		
-	std::cout << "Copy constructor called" << std::endl;
 	*this = other;
 }
 
 Fixed::Fixed(const int fixedPoint)
 {
 	_fixedPoint = fixedPoint << _bits;
-	std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed(const float fixedPoint)
 {
 	_fixedPoint = roundf(fixedPoint * (1 << _bits));
-	std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed& Fixed::operator=(const Fixed &other)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
 		this->setRawBits(other.getRawBits());
 	return *this;
@@ -100,9 +95,9 @@ Fixed	Fixed::operator*(const Fixed& other) const
 {
 	Fixed result;
 	long long	tmp = (static_cast<long long>(this->getRawBits()) * \
-		static_cast<long long>(other.getRawBits()));
+		static_cast<long long>(other.getRawBits())) >> _bits;
 
-	result.setRawBits(tmp >> _bits);
+	result.setRawBits(tmp);
 	return (result);
 }
 
@@ -174,5 +169,4 @@ std::ostream &operator<<(std::ostream &stream, Fixed const &other)
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
 }
