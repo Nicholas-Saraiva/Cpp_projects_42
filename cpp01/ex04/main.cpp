@@ -7,7 +7,7 @@ bool	isDirectory(const char* path)
 {
 	struct stat s;
 	if (stat(path, &s) == 0)
-		return (s.st_mode & S_IFDIR);
+		return (S_ISDIR(s.st_mode));
 	return false;
 }
 
