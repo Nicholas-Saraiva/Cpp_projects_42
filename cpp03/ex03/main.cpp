@@ -1,25 +1,30 @@
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 #include <iostream>
 
 int main()
 {
-    std::cout << "--- 1. INITIALIZATION TESTS ---" << std::endl;
-    FragTrap a("Megamen");
-    FragTrap b("Zero");
+	std::cout << "--- 1. CONSTRUCTION PHASE ---" << std::endl;
+	DiamondTrap dt("DUKE");
 
-    std::cout << "\n--- 2. COPY CONSTRUCTOR TEST ---" << std::endl;
-    FragTrap c(a); 
-    std::cout << "\n--- 3. ASSIGNMENT OPERATOR TEST ---" << std::endl;
-    a = b;  
-    std::cout << "\n--- 4. INDEPENDENCE TEST ---" << std::endl;
-    std::cout << "Damaging 'a' (the assigned version of Megamen)..." << std::endl;
-    a.takeDamage(30);
-    std::cout << "Showing 'b' (the original Zero) - should still have 100 HP:" << std::endl;
-    b.attack("nothing");
-    std::cout << "Showing 'c' (the copy of Megamen) - should still have 100 HP:" << std::endl;
-    c.attack("nothing");
-    std::cout << "\n--- 5. UNIQUE FragTrap ACTION ---" << std::endl;
-    a.highFivesGuys();
-    std::cout << "\n--- 6. DESTRUCTION PHASE ---" << std::endl;
-    return 0;
+	std::cout << "\n--- 2. IDENTITY TEST ---" << std::endl;
+	dt.whoAmI();
+
+	std::cout << "\n--- 3. ATTACK TEST (ScavTrap Logic) ---" << std::endl;
+	dt.attack("a training dummy");
+	
+	std::cout << "\n--- 4. SPECIAL ABILITIES ---" << std::endl;
+	dt.guardGate();
+	dt.highFivesGuys();
+
+	std::cout << "\n--- 5. DEEP COPY / ASSIGNMENT TEST ---" << std::endl;
+	DiamondTrap copy(dt);
+	DiamondTrap assigned;
+	assigned = dt;
+
+	std::cout << "Original name: "; dt.whoAmI();
+	std::cout << "Copy name:     "; copy.whoAmI();
+	std::cout << "Assigned name: "; assigned.whoAmI();
+
+	std::cout << "\n--- 6. DESTRUCTION PHASE ---" << std::endl;
+	return 0;
 }

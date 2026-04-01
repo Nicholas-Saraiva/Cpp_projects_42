@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 
 #define RESET   "\033[0m"
@@ -13,7 +15,6 @@ protected:
 	unsigned int	_hitPoints;
 	unsigned int	_energy;
 	unsigned int	_attack;
-	void			_printStats();
 public:
 	ClapTrap();
 	ClapTrap(std::string name);

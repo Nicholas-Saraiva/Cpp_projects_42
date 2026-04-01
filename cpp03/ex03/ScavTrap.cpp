@@ -9,7 +9,6 @@ ScavTrap::ScavTrap() : ClapTrap()
 	this->_attack = 30;
 	this->_isGuardingGate = 0;
 	std::cout << "|| A default ScavTrap was Created!" << std::endl;
-	_printStats();
 }
 
 ScavTrap::ScavTrap(std::string name): ClapTrap(name)
@@ -19,7 +18,6 @@ ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 	this->_attack = 30;
 	this->_isGuardingGate = 0;
 	std::cout << "|| ScavTrap " << CYAN << name << RESET << " was Created!" << std::endl;
-	_printStats();
 }
 
 ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other) 
@@ -54,7 +52,6 @@ void ScavTrap::attack(const std::string &target)
 		std::cout << "|| ScavTrap <" << CYAN << this->_name << RESET << ">" << RED 
 		<<" cannot take action" << std::endl;
 	}
-	_printStats();
 }
 
 void ScavTrap::takeDamage(unsigned int amount)
@@ -65,7 +62,6 @@ void ScavTrap::takeDamage(unsigned int amount)
 		this->_hitPoints = 0;
 	std::cout << "|| ScavTrap <" << CYAN << this->_name << RESET << ">" << RED <<" takes "<< RESET << "<" << amount << "> \
 points of damage!" << std::endl;
-	_printStats();
 }
 
 void ScavTrap::beRepaired(unsigned int amount)
@@ -85,7 +81,6 @@ void ScavTrap::beRepaired(unsigned int amount)
 		std::cout << "|| ScavTrap <" << CYAN << this->_name << RESET << ">" << RED 
 		<<" cannot take action" << std::endl;
 	}
-	_printStats();
 }
 
 void ScavTrap::guardGate()
@@ -107,14 +102,6 @@ void ScavTrap::guardGate()
 		std::cout << "|| ScavTrap <" << CYAN << this->_name << RESET << ">" << RED 
 		<<" cannot take action" << std::endl;
 	}
-	_printStats();
-}
-
-void ScavTrap::_printStats(void) 
-{
-	ClapTrap::_printStats();
-	std::cout << WHITE << "|| " << RESET;
-	std::cout << "Guarding State: " << std::left << std::setw(8) << _isGuardingGate << std::endl;
 }
 
 ScavTrap::~ScavTrap()

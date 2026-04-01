@@ -1,5 +1,5 @@
 #//---Files--//#
-NAME = scavTrap
+NAME = diamondTrap
 SRC_DIR = src
 BUILD_PATH  = .build/
 INC_DIR = .
@@ -8,6 +8,7 @@ FILES = main
 FILES += ClapTrap
 FILES += ScavTrap
 FILES += FragTrap
+FILES += DiamondTrap
 
 OBJS = $(addprefix $(BUILD_PATH), $(addsuffix .o, $(FILES)))
 DEPS = $(OBJS:.o=.d)
