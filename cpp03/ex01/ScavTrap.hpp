@@ -4,7 +4,6 @@ class ScavTrap : public ClapTrap
 {
 private:
 	int		_isGuardingGate;
-	void	_printStats(void);
 public:
 	ScavTrap();
 	ScavTrap(std::string name);

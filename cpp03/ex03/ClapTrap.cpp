@@ -1,34 +1,40 @@
 #include "ClapTrap.hpp"
 #include <iostream>
-#include <iomanip>
+
+void ClapTrap::printStats(void) 
+{
+	std::cout << WHITE << "|| " << RESET;
+	std::cout <<  CYAN << _name << " Stats > " << RESET;
+	std::cout << "||HP: " << _hitPoints;
+	std::cout << "||EP: " << _energy;
+	std::cout << "||ATK: "<< _attack << std::endl;
+}
 
 ClapTrap::ClapTrap() 
-	: _name(NULL), _hitPoints(10), _energy(10), _attack(0)
+	: _name(NULL), _hitPoints(10), _energy(10), _attack(0) 
 {
 	std::cout << "|| A default ClapTrap was Created!" << std::endl;
 }
+
 ClapTrap::ClapTrap(std::string name) 
 	: _name(name), _hitPoints(10), _energy(10), _attack(0)
 {
-	std::cout << "|| A ClapTrap " << CYAN << name << RESET << " was Created!" << std::endl;
+	std::cout << "|| ClapTrap " << CYAN << name << RESET << " was Created!" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
 	*this = other;
-	std::cout << "|| A ClapTrap was created through copy assignment!" << std::endl;
+	std::cout << "|| ClapTrap Copy Constructor called for " << _name << std::endl;
 }
 
-ClapTrap& ClapTrap::operator=(const ClapTrap& other) 
+ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 {
-	if (this != &other)
-	{
-		this->_name = other._name;
-		this->_hitPoints = other._hitPoints;
-		this->_energy = other._energy;
-		this->_attack = other._attack;
-		std::cout << "|| \033[35m[SYSTEM]\033[0m " << _name << " data has been cloned!" << std::endl;
-	}
+	this->_name = other._name;
+	this->_attack = other._attack;
+	this->_energy = other._energy;
+	this->_hitPoints = other._hitPoints;
+	std::cout << "|| ClapTrap " << _name << " assigned!" << std::endl;		
 	return *this;
 }
 
@@ -44,7 +50,7 @@ void ClapTrap::attack(const std::string &target)
 	else
 	{
 		std::cout << "|| ClapTrap <" << CYAN << this->_name << RESET << ">" << RED 
-		<<" cannot take action" << std::endl;
+		<<" cannot take action" << RESET << std::endl;
 	}
 }
 
@@ -74,11 +80,11 @@ void ClapTrap::beRepaired(unsigned int amount)
 	else
 	{
 		std::cout << "|| ClapTrap <" << CYAN << this->_name << RESET << ">" << RED 
-		<<" cannot take action" << std::endl;
+		<<" cannot take action" << RESET << std::endl;
 	}
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "|| ClapTrap " << CYAN << this->_name << RESET << " died a horrible death :()" << std::endl;
+	std::cout << "ClapTrap " << _name << " rust away >:(" << std::endl;
 }

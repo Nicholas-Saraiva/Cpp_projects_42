@@ -5,8 +5,8 @@
 ScavTrap::ScavTrap() : ClapTrap()
 {
 	this->_hitPoints = 100;
-	this->_energy = 100;
-	this->_attack = 30;
+	this->_energy = 50;
+	this->_attack = 20;
 	this->_isGuardingGate = 0;
 	std::cout << "|| A default ScavTrap was Created!" << std::endl;
 }
@@ -14,8 +14,8 @@ ScavTrap::ScavTrap() : ClapTrap()
 ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 {
 	this->_hitPoints = 100;
-	this->_energy = 100;
-	this->_attack = 30;
+	this->_energy = 50;
+	this->_attack = 20;
 	this->_isGuardingGate = 0;
 	std::cout << "|| ScavTrap " << CYAN << name << RESET << " was Created!" << std::endl;
 }
@@ -33,7 +33,7 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other)
 		ClapTrap::operator=(other);
 		this->_isGuardingGate = other._isGuardingGate;
 	
-		std::cout << "ScavTrap " << _name << " assigned!" << std::endl;		
+		std::cout << "|| ScavTrap " << _name << " assigned!" << std::endl;		
 	}
 	return (*this);
 }

@@ -8,7 +8,6 @@ FragTrap::FragTrap() : ClapTrap()
 	this->_energy = 100;
 	this->_attack = 30;
 	std::cout << "|| A default FragTrap was Created!" << std::endl;
-	_printStats();
 }
 
 FragTrap::FragTrap(std::string name): ClapTrap(name)
@@ -17,12 +16,10 @@ FragTrap::FragTrap(std::string name): ClapTrap(name)
 	this->_energy = 100;
 	this->_attack = 30;
 	std::cout << "|| FragTrap " << CYAN << name << RESET << " was Created!" << std::endl;
-	_printStats();
 }
 
 FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other) 
 {
-	*this = other;
 	std::cout << "|| FragTrap Copy Constructor called for " << _name << std::endl;
 }
 
@@ -31,7 +28,7 @@ FragTrap& FragTrap::operator=(const FragTrap& other)
 	if (this != &other)
 	{
 		ClapTrap::operator=(other);	
-		std::cout << "FragTrap " << _name << " assigned!" << std::endl;		
+		std::cout << "|| FragTrap " << _name << " assigned!" << std::endl;		
 	}
 	return (*this);
 }
@@ -50,7 +47,6 @@ void FragTrap::attack(const std::string &target)
 		std::cout << "|| FragTrap <" << CYAN << this->_name << RESET << ">" << RED 
 		<<" cannot take action" << std::endl;
 	}
-	_printStats();
 }
 
 void FragTrap::takeDamage(unsigned int amount)
@@ -61,7 +57,6 @@ void FragTrap::takeDamage(unsigned int amount)
 		this->_hitPoints = 0;
 	std::cout << "|| FragTrap <" << CYAN << this->_name << RESET << ">" << RED <<" takes "<< RESET << "<" << amount << "> \
 points of damage!" << std::endl;
-	_printStats();
 }
 
 void FragTrap::beRepaired(unsigned int amount)
@@ -81,7 +76,6 @@ void FragTrap::beRepaired(unsigned int amount)
 		std::cout << "|| FragTrap <" << CYAN << this->_name << RESET << ">" << RED 
 		<<" cannot take action" << std::endl;
 	}
-	_printStats();
 }
 
 void FragTrap::highFivesGuys(void)
