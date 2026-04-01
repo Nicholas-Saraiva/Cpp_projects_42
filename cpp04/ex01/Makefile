@@ -1,8 +1,8 @@
 #//---Files--//#
-NAME = animal
+NAME = diamondTrap
 SRC_DIR = src
 BUILD_PATH  = .build/
-INC_DIR = includes
+INC_DIR = .
 
 FILES = main
 FILES += Animal
@@ -16,7 +16,6 @@ DEPS = $(OBJS:.o=.d)
 
 #//--Paths--//#
 VPATH := .
-VPATH := $(SRC_DIR)
 
 #//--Compiler--//#
 CC = c++
