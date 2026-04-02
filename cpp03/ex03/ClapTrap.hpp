@@ -26,5 +26,5 @@ public:
 	void		takeDamage(unsigned int amount);
 	void		beRepaired(unsigned int amount);
 	void		printStats();
-	~ClapTrap();
+	virtual ~ClapTrap();
 };

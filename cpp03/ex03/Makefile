@@ -18,7 +18,7 @@ VPATH := .
 
 #//--Compiler--//#
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -I$(INC_DIR)
+CFLAGS = -Wall -Wextra -Werror -Wshadow -std=c++98 -MMD -I$(INC_DIR)
 
 #//--Rules--//#
 all: $(NAME)

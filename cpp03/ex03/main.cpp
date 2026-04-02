@@ -26,5 +26,7 @@ int main()
     c.guardGate();
     c.whoAmI();
     std::cout << "\n--- 6. DESTRUCTION PHASE ---" << std::endl;
-    return 0;
+    ClapTrap    *z = new FragTrap("oi");
+	delete z;
+	return 0;
 }
