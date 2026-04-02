@@ -13,7 +13,7 @@ public:
 	Cat(const Cat& other);
 
 	void	makeSound() const;
-	Brain	*getBrain() const;
+	Brain*	getBrain() const;
 	Cat&	operator=(const Cat& other);
 	~Cat();
 };
