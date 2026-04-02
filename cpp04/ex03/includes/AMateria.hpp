@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 #include "ICharacter.hpp"
 
@@ -7,11 +9,11 @@ protected:
 	std::string	_type;
 public:
 	AMateria();
-	AMateria(const AMateria& other);
-	AMateria(std::string const& type);
+	AMateria(std::string type);
+	AMateria(const AMateria &other);
 
 	std::string const & getType() const;
-	&AMateria	operator=(const AMateria& other);
+	AMateria&	operator=(const AMateria& other);
 	virtual AMateria*clone() const = 0;
 	virtual void	use(ICharacter& target);
 	virtual ~AMateria();

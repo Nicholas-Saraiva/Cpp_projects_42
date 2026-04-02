@@ -8,7 +8,7 @@
 int main()
 {
     Dog dog;
-    Animal ani;
+    //Animal ani;
 
     return 0;
 }

@@ -6,7 +6,7 @@ AMateria::AMateria()
 	std::cout << "|| Create a default AMateria" << std::endl;
 }
 
-AMateria::AMateria(std::string type) : type(type)
+AMateria::AMateria(std::string type) : _type(type)
 {
 	std::cout << "|| Create a AMateria of type: " << type << std::endl;
 }
@@ -18,24 +18,19 @@ AMateria::AMateria(const AMateria &other)
 
 }
 
-std::string AMateria::getType() const
+std::string const & AMateria::getType() const
 {
-	return type;
-}
-
-void AMateria::makeSound() const
-{
-	std::cout << "|| The AMateria Speaks!!!" << std::endl;
+	return this->_type;
 }
 
 AMateria &AMateria::operator=(const AMateria &other)
 {
-	this->type = other.type;
+	this->_type = other._type;
 	std::cout << "|| AMateria using copy operator" << std::endl;
 	return (*this);
 }
 
 AMateria::~AMateria()
 {
-	std::cout << "|| Is the end of a " << type << " AMateria :<" << std::endl;
+	std::cout << "|| Is the end of a " << _type << " AMateria :<" << std::endl;
 }
