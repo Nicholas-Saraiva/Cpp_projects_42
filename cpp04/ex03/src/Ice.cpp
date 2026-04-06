@@ -3,43 +3,29 @@
 
 Ice::Ice() : AMateria("ice")
 {
-	std::cout << "|| Create a default Ice" << std::endl;
 }
 
-Ice::Ice(const Ice &other) : AMateria(other)
+Ice::Ice(const Ice &other) : AMateria(other._type)
 {
-	std::cout << "|| Create a Ice by copy constructor: " << type << std::endl;
-
 }
 
 void Ice::use(ICharacter &target)
 {
-	std::cout << "* shoots an ice bolt at " << target->type << " *"  << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *"  << std::endl;
 }
 
-AMateria *Ice::clone()
+Ice *Ice::clone() const
 {
-	return nullptr;
-}
-
-std::string Ice::getType() const
-{
-	return type;
-}
-
-void Ice::makeSound() const
-{
-	std::cout << "|| The Ice Speaks!!!" << std::endl;
+	return (new Ice());
 }
 
 Ice &Ice::operator=(const Ice &other)
 {
-	this->type = other.type;
-	std::cout << "|| Ice using copy operator" << std::endl;
+	if (this != &other)
+		this->_type = other._type;
 	return (*this);
 }
 
 Ice::~Ice()
 {
-	std::cout << "|| Is the end of a " << type << " Ice :<" << std::endl;
 }

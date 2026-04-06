@@ -3,19 +3,24 @@
 
 AMateria::AMateria()
 {
-	std::cout << "|| Create a default AMateria" << std::endl;
 }
 
 AMateria::AMateria(std::string type) : _type(type)
 {
-	std::cout << "|| Create a AMateria of type: " << type << std::endl;
 }
 
 AMateria::AMateria(const AMateria &other)
 {
 	*this = other;
-	std::cout << "|| Create a AMateria by copy constructor: " << type << std::endl;
+}
 
+AMateria &AMateria::operator=(const AMateria &other)
+{
+	if (this != &other)
+	{
+		this->_type = other._type;
+	}
+	return (*this);
 }
 
 std::string const & AMateria::getType() const
@@ -23,14 +28,12 @@ std::string const & AMateria::getType() const
 	return this->_type;
 }
 
-AMateria &AMateria::operator=(const AMateria &other)
+
+void AMateria::use(ICharacter &target)
 {
-	this->_type = other._type;
-	std::cout << "|| AMateria using copy operator" << std::endl;
-	return (*this);
+	std::cout << "Default attack of a no type on " << target.getName() << std::endl;
 }
 
 AMateria::~AMateria()
 {
-	std::cout << "|| Is the end of a " << _type << " AMateria :<" << std::endl;
 }
