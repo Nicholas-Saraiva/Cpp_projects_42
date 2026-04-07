@@ -23,11 +23,6 @@ std::string Animal::getType() const
 	return type;
 }
 
-void Animal::makeSound() const
-{
-	std::cout << "|| The Animal Speaks!!!" << std::endl;
-}
-
 Animal &Animal::operator=(const Animal &other)
 {
 	this->type = other.type;

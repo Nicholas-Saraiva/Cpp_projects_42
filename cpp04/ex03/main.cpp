@@ -1,14 +1,8 @@
-#include "Animal.hpp"
-#include "WrongAnimal.hpp"
-#include "Dog.hpp"
-#include "Cat.hpp"
-#include "WrongCat.hpp"
+#include  "ICharacter.hpp"
 #include <iostream>
 
 int main()
 {
-    Dog dog;
-    //Animal ani;
-
+    ICharacter *a;
     return 0;
 }

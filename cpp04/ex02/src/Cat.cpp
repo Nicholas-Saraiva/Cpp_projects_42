@@ -16,17 +16,20 @@ Cat::Cat(std::string name) : Animal("Cat")
 
 Cat::Cat(const Cat &other) : Animal(other)
 {
-	this->_name = other._name;
-	this->_brain = new Brain(*other._brain);
-	std::cout << "|| Create a Cat by copy constructor: " << type << std::endl;
-
+	if (this != &other)
+	{
+		this->_brain = new Brain(*(other._brain));
+		this->_name = other._name;
+		std::cout << "|| Create a Cat by copy constructor: " << type << std::endl;
+	}
 }
 
 Cat &Cat::operator=(const Cat &other)
 {
 	if (this != &other)
 	{
-		delete this->_brain;
+		if (this->_brain)
+			delete this->_brain;
 		this->_brain = new Brain(*(other._brain));
 		Animal::operator=(other);
 		this->_name = other._name;
@@ -47,6 +50,7 @@ Brain *Cat::getBrain() const
 
 Cat::~Cat()
 {
-	delete this->_brain;
+	if (this->_brain)
+		delete this->_brain;
 	std::cout << "|| Is the end of a " << type << std::endl;
 }

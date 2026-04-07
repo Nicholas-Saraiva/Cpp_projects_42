@@ -26,16 +26,12 @@ int main()
     }
 
     std::cout << "\n--- 2. TESTING DEEP COPY ---" << std::endl;
-    Dog* originalDog = new Dog();
-	originalDog->getBrain()->putIdea("AUAU");
-    std::cout << "Creating copyDog from originalDog..." << std::endl;
-    Dog* copyDog = new Dog(*originalDog);
-    std::cout << "Deleting originalDog..." << std::endl;
-    delete originalDog;
-
-    std::cout << "Checking if copyDog still has a brain..." << std::endl;
-    std::cout << copyDog->getBrain()->getIdea(0) << std::endl;
-    delete copyDog;
+    Dog basic;
+    {
+        Dog tmp = basic;
+    }
+    basic.getBrain()->putIdea("I have a ideia");
+    std::cout << basic.getBrain()->getIdea(0) << std::endl;
 
     std::cout << "\n--- 3. DELETING ARRAY (The Leak Test) ---" << std::endl;
     for (int i = 0; i < numAnimals; i++)
