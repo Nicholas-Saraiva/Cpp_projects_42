@@ -1,11 +1,11 @@
 #//---Files--//#
-NAME = animal
+NAME = bureaucrat
 SRC_DIR = src
 BUILD_PATH  = .build/
 INC_DIR = includes
 
 FILES = main
-FILES +=
+FILES += Bureaucrat
 
 OBJS = $(addprefix $(BUILD_PATH), $(addsuffix .o, $(FILES)))
 DEPS = $(OBJS:.o=.d)
