@@ -22,20 +22,15 @@ int main()
 	}
 
 	std::cout << "\n--- TEST 2: Grade Too Low to Sign ---" << std::endl;
-	try
-	{
-		Bureaucrat  intern("The Intern", 150);
-		Form        secretPlan("Area 51 Map", 1, 1);
 
-		std::cout << intern << std::endl;
-		std::cout << secretPlan << std::endl;
+	Bureaucrat  intern("The Intern", 150);
+	Form        secretPlan("Area 51 Map", 1, 1);
 
-		intern.signForm(secretPlan);
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "Unexpected Exception: " << e.what() << std::endl;
-	}
+	std::cout << intern << std::endl;
+	std::cout << secretPlan << std::endl;
+
+	intern.signForm(secretPlan);
+
 
 	std::cout << "\n--- TEST 3: Form Creation Error (Too High) ---" << std::endl;
 	try
