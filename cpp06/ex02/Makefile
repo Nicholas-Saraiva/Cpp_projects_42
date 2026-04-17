@@ -16,7 +16,7 @@ VPATH := $(SRC_DIR)
 
 #//--Compiler--//#
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -g -O0 -std=c++98 -MMD -I$(INC_DIR)
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -I$(INC_DIR)
 
 #//--Rules--//#
 all: $(NAME)

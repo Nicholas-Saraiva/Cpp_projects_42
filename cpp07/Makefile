@@ -5,8 +5,6 @@ BUILD_PATH  = .build/
 INC_DIR = includes
 
 FILES = main
-FILES += ScalarConverter
-
 
 OBJS = $(addprefix $(BUILD_PATH), $(addsuffix .o, $(FILES)))
 DEPS = $(OBJS:.o=.d)
