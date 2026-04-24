@@ -1,5 +1,5 @@
 #//---Files--//#
-NAME = converter
+NAME = template
 SRC_DIR = src
 BUILD_PATH  = .build/
 INC_DIR = includes
